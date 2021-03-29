@@ -1,0 +1,88 @@
+#information_article .article .article_content .company {
+  margin-bottom: 50px;
+}
+#information_article .article .article_content .article_text {
+  margin-bottom: 150px;
+}
+#information_article .article .article_content .article_text h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+#information_article .article .article_content .article_text p {
+  margin-bottom: 50px;
+  font-size: 20px;
+}
+#information_article .article .article_content .article_text img {
+  width: 360px;
+  height: 260px;
+  padding-left: 10px;
+  float: right;
+  object-fit: cover;
+}
+#information_article .btn_back {
+  width: 100%;
+}
+#information_article .information_list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 60px 0 70px;
+}
+#information_article .information_list li {
+  width: calc(50% - 30px);
+  margin-bottom: 50px;
+  position: relative;
+}
+#information_article .information_list li:hover {
+  opacity: 0.7;
+  transition: 0.5s;
+}
+#information_article .information_list li img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+}
+#information_article .information_list a {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#information_article .information_list li img {
+  margin-bottom: 15px;
+}
+#information_article .information_list li .information_title {
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 24px;
+}
+#information_article .information_list li p {
+  font-size: 14px;
+}
+#information_article .related_information h2 {
+  font-size: 30px;
+  font-weight: bold;
+  color: #375592;
+}
+@media screen and (max-width: 960px) {
+  #information_article .article .article_content .article_text img {
+    padding-left: 0;
+    margin-bottom: 30px;
+    float: none;
+  }
+  #information_article .related_solution h2 {
+    font-size: 24px;
+  }
+  #information_article .information_list {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  #information_article .information_list li {
+    width: 100%;
+    max-width: 450px;
+    min-height: initial;
+    margin: 0 auto 50px;
+  }
+}
