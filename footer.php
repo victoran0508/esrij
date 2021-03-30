@@ -2,7 +2,7 @@
     <div class="container">
       <div class="fixed_footer_left">
         <a href="tel:0332223914" class="tel">
-          <img src="<?php get_template_directory_uri(); ?>/img/tel.png">03-3222-3941
+          <img src="<?php echo get_template_directory_uri(); ?>/img/tel.png">03-3222-3941
         </a>
         <div>
           <p>お気軽にご相談・お問い合わせください</p>

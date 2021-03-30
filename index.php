@@ -1,4 +1,15 @@
-<?php get_header(); ?>
+<?php get_header();
+
+    $args = array('post_type' => 'solution', 'number' => '999');
+    $solution_tags = get_terms( 'tag',
+            [
+                'hide_empty' => true,
+                'orderby' => 'wpse_last_word',
+            ] , $args );
+
+?>
+
+</head>
 
 <body id="top_page">
   <!-- header -->
@@ -16,7 +27,7 @@
         <a href="#" class="btn_orange center opacity">資料ダウンロード</a>
       </li>
       <li>
-        <a href="#"><img src="<?php get_template_directory_uri(); ?>/img/logo.png"></a>
+        <a href="<?php home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/logo.png"></a>
       </li>
     </ul>
   </header>
@@ -34,14 +45,9 @@
           ソリューションをご覧ください。
         </h3>
         <ul class="hashtag_list">
-          <li><a href="#" class="large">＃配送エリアの管理</a></li>
-          <li><a href="#" class="medium">＃配送・配達エリアの見える化</a></li>
-          <li><a href="#" class="medium">＃配送・配達エリアの最適化</a></li>
-          <li><a href="#" class="large">＃物流センターの拠点分析</a></li>
-          <li><a href="#" class="large">＃ラストワンマイルの効率化</a></li>
-          <li><a href="#" class="small">＃配送・配達ルートの解析</a></li>
-          <li><a href="#" class="medium">＃配送・配達エリアの最適化</a></li>
-          <li><a href="#" class="small">＃配送・配達ルートの解析</a></li>
+          <?php foreach ( $solution_tags as $term ) { ?>
+          <li><a href="<?php home_url(); ?>solution?tag=<?php echo $term->term_id; ?>" class="large">＃<?php echo $term->name; ?></a></li>
+          <?php } ?>
         </ul>
       </div>
     </section>
@@ -60,21 +66,21 @@
         <ul class="merits_list">
           <li>
             <div class="merit_img">
-              <img src="<?php get_template_directory_uri(); ?>/img/merit1.png">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/merit1.png">
             </div>
             <p>地図システム導入のメリット<span>1</span></p>
             <p>業務効率化によるコスト削減</p>
           </li>
           <li>
             <div class="merit_img">
-              <img src="<?php get_template_directory_uri(); ?>/img/merit2.png">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/merit2.png">
             </div>
             <p>地図システム導入のメリット<span>2</span></p>
             <p>業務効率化によるコスト削減</p>
           </li>
           <li>
             <div class="merit_img">
-              <img src="<?php get_template_directory_uri(); ?>/img/merit3.png">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/merit3.png">
             </div>
             <p>地図システム導入のメリット<span>3</span></p>
             <p>業務効率化によるコスト削減</p>
@@ -94,19 +100,19 @@
         </div>
         <ul class="reasons_list">
           <li>
-            <img src="<?php get_template_directory_uri(); ?>/img/01.png" alt="01">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/01.png" alt="01">
             <p>圧倒的な数を誇る GIS 機能</p>
             <p>
               ESRIは、データの取得、作成、管理、表示、検索、解析、共有など、地理空間情報を活用するための一連の機能をサービスとして提供します。ほとんどの機能要件は標準機能で実現できますので、<span>開発コストを最小限</span>に抑えることができます。
             </p>
           </li>
           <li>
-            <img src="<?php get_template_directory_uri(); ?>/img/02.png" alt="02">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/02.png" alt="02">
             <p>豊富な導入実績</p>
             <p>ESRIは、50 年近くにわたって物流・配送会社向けのGISソリューションを提供し続けているGISのリーディングカンパニーであり、そのソフトウェアは<span>世界最大のシェア</span>（＊）を誇ります。</p>
           </li>
           <li>
-            <img src="<?php get_template_directory_uri(); ?>/img/03.png" alt="03">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/03.png" alt="03">
             <p>導入の容易性</p>
             <p>
               ESRIが提供するArcGISシステムでは、無償のオンライン地図サービスを提供しており、各種アプリからアクセスしてすぐに汎用的な業務で利用することができます。また、<span>特定の用途に対応したアプリを簡単に作成できるアプリビルダーやテンプレートも提供</span>しています。
@@ -127,7 +133,7 @@
         </div>
         <ul class="reasons_list">
           <li>
-            <img src="<?php get_template_directory_uri(); ?>/img/feature.png">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/feature.png">
             <p>マップデータから
               <br>システムまで
               <br>一貫したサービスを
@@ -136,7 +142,7 @@
             <p>ESRIで50年近くに渡って蓄積した豊富なマップデータだけでなく、マップを活用するための最適データを提供しています。</p>
           </li>
           <li>
-            <img src="<?php get_template_directory_uri(); ?>/img/feature.png">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/feature.png">
             <p>リアルタイムで配車、
               <br>荷物の情報を
               <br>把握できます
@@ -144,7 +150,7 @@
             <p>医薬品や生鮮食品などの特別の荷物の状況をリアルタイムで把握できます。</p>
           </li>
           <li>
-            <img src="<?php get_template_directory_uri(); ?>/img/feature.png">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/feature.png">
             <p>システム活用ための
               <br>専門性高い
               <br>コンサルティング
@@ -203,7 +209,7 @@
           </p>
           <a href="#" class="btn_more">
             GISデータストア
-            <img src="<?php get_template_directory_uri(); ?>/img/arrow.png">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png">
           </a>
         </div>
       </div>
@@ -220,64 +226,32 @@
           <br>国内外のリーディングカンパニー導入事例まで、多数のソリューションをご紹介！
         </h5>
         <ul class="solutions_list">
-          <li>
-            <a href="#"></a>
-            <div class="solution_img">
-              <img src="<?php get_template_directory_uri(); ?>/img/solution.png">
-              <p>配送エリアの管理</p>
-            </div>
-            <p class="solution_title">株式会社エバルス</p>
-            <p>ArcGISのVRP（配車システム）で新しい物流センターの人件費、必要車数を約90％削減</p>
-          </li>
-          <li>
-            <a href="#"></a>
-            <div class="solution_img">
-              <img src="<?php get_template_directory_uri(); ?>/img/solution.png">
-              <p>国内中堅企業</p>
-            </div>
-            <p class="solution_title">国内企業B社</p>
-            <p>B社は、自動車、バイクなどに使うバッテリーを販売しているメーカーで、30社の販売代理店への配送効率化のために同システムを導入。</p>
-          </li>
-          <li>
-            <a href="#"></a>
-            <div class="solution_img">
-              <img src="<?php get_template_directory_uri(); ?>/img/solution.png">
-              <p>国内中小企業</p>
-            </div>
-            <p class="solution_title">国内企業C社</p>
-            <p>C社は、関西にある運送会社で、配送エリアの管理のため同システムを導入、効率的な配送ルートを生成し、ドライバーの稼働時間を30時間/月削減を実現した。</p>
-          </li>
-          <li>
-            <a href="#"></a>
-            <div class="solution_img">
-              <img src="<?php get_template_directory_uri(); ?>/img/solution.png">
-              <p>海外大手企業</p>
-            </div>
-            <p class="solution_title">米国UPS 社</p>
-            <p>自社配送ソリューションを活かしたまま、ESRIの地理情報システム導入で、約1.6億 kｍ走行距離を削減。</p>
-          </li>
-          <li>
-            <a href="#"></a>
-            <div class="solution_img">
-              <img src="<?php get_template_directory_uri(); ?>/img/solution.png">
-              <p>海外中堅企業</p>
-            </div>
-            <p class="solution_title">海外企業A社</p>
-            <p>あるメーカーで地方への輸送において、物流の効率化を図るためGISを導入し配送時間を300時間/月の削減に成功。</p>
-          </li>
-          <li>
-            <a href="#"></a>
-            <div class="solution_img">
-              <img src="<?php get_template_directory_uri(); ?>/img/solution.png">
-              <p>海外中小企業</p>
-            </div>
-            <p class="solution_title">米国 アペックス オフィス サプライ社</p>
-            <p>物流業務へのArcGIS導入で燃料費4.3％、労働時間18％の削減を実現。</p>
-          </li>
+        <?php
+            $query = new WP_Query( array(
+                'post_type' => 'solution',
+                // 'tax_query' => array(),
+                // 'ignore_sticky_posts' => 1,
+                'posts_per_page' => 6,
+            ) );
+        
+            if ($query->have_posts()) {
+                while ($query->have_posts() ) : $query->the_post(); ?>
+                <li>
+                  <a href="<?php the_permalink();  ?>"></a>
+                  <div class="solution_img">
+                    <img src="<?php the_post_thumbnail_url(); ?>">
+                    <p><?php echo get_post_meta( $post->ID, 'tab', true); ?></p>
+                  </div>
+                  <p class="solution_title"><?php echo get_post_meta( $post->ID, 'company', true); ?></p>
+                  <p><?php the_title(); ?></p>
+                </li>
+                <?php endwhile; wp_reset_query();
+            }
+        ?>
         </ul>
-        <a href="./solution_index.html" class="btn_more">
+        <a href="<?php home_url(); ?>solution" class="btn_more">
           さらに読み込む
-          <img src="<?php get_template_directory_uri(); ?>/img/arrow.png">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png">
         </a>
       </div>
     </section>
@@ -290,28 +264,27 @@
         </div>
         <h5>物流、配送、ロジスティクスにおけるGIS活用記事をご紹介しております。</h5>
         <ul class="information_list">
-          <li>
-            <a href="#"></a>
-            <img src="<?php get_template_directory_uri(); ?>/img/information1.png">
-            <p class="information_title">バッテリー販売大手GISの利用で配送ルートの最適化とコスト削減を目指す。</p>
-            <p>Interstate Batteries　社</p>
-          </li>
-          <li>
-            <a href="#"></a>
-            <img src="<?php get_template_directory_uri(); ?>/img/information2.png">
-            <p class="information_title">グローバルサプライチェーンの合理化と顧客への高品質なサービス提供を支援</p>
-            <p>シスコシステムズ</p>
-          </li>
-          <li>
-            <a href="#"></a>
-            <img src="<?php get_template_directory_uri(); ?>/img/information3.png">
-            <p class="information_title">動画：配送ルートの最適化により年間 4 億ドルの経費削減に成功</p>
-            <p>UPS 社（ユナイテッド・パーセル・サービス）</p>
-          </li>
+        <?php
+            $query = new WP_Query( array(
+                'post_type' => 'information',
+                'posts_per_page' => 3,
+            ) );
+        
+            if ($query->have_posts()) {
+                while ($query->have_posts() ) : $query->the_post(); ?>
+                <li>
+                  <a href="<?php the_permalink(); ?>"></a>
+                  <img src="<?php the_post_thumbnail_url(); ?>">
+                  <p class="information_title"><?php the_title(); ?></p>
+                  <p><?php echo get_post_meta( $post->ID, 'company', true); ?></p>
+                </li>
+                <?php endwhile; wp_reset_query();
+            }
+        ?>
         </ul>
-        <a href="./information_index.html" class="btn_more">
+        <a href="<?php home_url(); ?>information" class="btn_more">
           さらに読み込む
-          <img src="<?php get_template_directory_uri(); ?>/img/arrow.png">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png">
         </a>
       </div>
     </section>
@@ -326,54 +299,31 @@
           <br>多くお問い合わせいただく質問とその回答です。
         </h5>
         <ul class="faq_list">
-          <li>
-            <div class="question accordion">
-              <h2 class="center">Q</h2>
-              <h3>物流・配送・ロジスティクス業務の地図システム に関するよくある質問</h3>
-              <span class="accordion_open"><img src="<?php get_template_directory_uri(); ?>/img/arrow_down.png"></span><span class="accordion_close"><img
-                  src="<?php get_template_directory_uri(); ?>/img/arrow_up.png"></span>
-            </div>
-            <div class="none">
-              <div class="answer">
-                <h2 class="center">A</h2>
-                <p>物流、配送、ロジスティクス分野で、地図システムの利用を検討されている方々から多くお問い合わせいただく質問とその回答です。
-                  <br>物流、配送、ロジスティクス分野で、地図システムの利用を検討されている方々から多くお問い合わせいただく質問とその回答です。
-                </p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="question accordion">
-              <h2 class="center">Q</h2>
-              <h3>多くお問い合わせいただく質問とその回答です。</h3>
-              <span class="accordion_open"><img src="<?php get_template_directory_uri(); ?>/img/arrow_down.png"></span><span class="accordion_close"><img
-                  src="<?php get_template_directory_uri(); ?>/img/arrow_up.png"></span>
-            </div>
-            <div class="none">
-              <div class="answer">
-                <h2 class="center">A</h2>
-                <p>物流、配送、ロジスティクス分野で、地図システムの利用を検討されている方々から多くお問い合わせいただく質問とその回答です。
-                  <br>物流、配送、ロジスティクス分野で、地図システムの利用を検討されている方々から多くお問い合わせいただく質問とその回答です。
-                </p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="question accordion">
-              <h2 class="center">Q</h2>
-              <h3>物流・配送・ロジスティクス業務の地図システムについて。</h3>
-              <span class="accordion_open"><img src="<?php get_template_directory_uri(); ?>/img/arrow_down.png"></span><span class="accordion_close"><img
-                  src="<?php get_template_directory_uri(); ?>/img/arrow_up.png"></span>
-            </div>
-            <div class="none">
-              <div class="answer">
-                <h2 class="center">A</h2>
-                <p>物流、配送、ロジスティクス分野で、地図システムの利用を検討されている方々から多くお問い合わせいただく質問とその回答です。
-                  <br>物流、配送、ロジスティクス分野で、地図システムの利用を検討されている方々から多くお問い合わせいただく質問とその回答です。
-                </p>
-              </div>
-            </div>
-          </li>
+        <?php
+            $query = new WP_Query( array(
+                'post_type' => 'faq',
+                'posts_per_page' => 5,
+            ) );
+        
+            if ($query->have_posts()) {
+                while ($query->have_posts() ) : $query->the_post(); ?>
+                <li>
+                  <div class="question accordion">
+                    <h2 class="center">Q</h2>
+                    <h3><?php echo get_post_meta( $post->ID, 'question', true); ?></h3>
+                    <span class="accordion_open"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow_down.png"></span><span class="accordion_close"><img
+                        src="<?php echo get_template_directory_uri(); ?>/img/arrow_up.png"></span>
+                  </div>
+                  <div class="none">
+                    <div class="answer">
+                      <h2 class="center">A</h2>
+                      <p><?php echo get_post_meta( $post->ID, 'answer', true); ?></p>
+                    </div>
+                  </div>
+                </li>
+                <?php endwhile; wp_reset_query();
+            }
+        ?>
         </ul>
       </div>
     </section>
@@ -456,11 +406,11 @@
 
   <!-- 固定要素 -->
   <div class="contact">
-    <img src="<?php get_template_directory_uri(); ?>/img/webinar_icon.png">
+    <img src="<?php echo get_template_directory_uri(); ?>/img/webinar_icon.png">
     <p>ESRIジャパンでは導入を検討の
     <br>企業様向けにオンラインセミナーを実施しております。</p>
     <a href="#" class="btn_contact">
-      お申し込みはこちら<img src="<?php get_template_directory_uri(); ?>/img/arrow_right.png" width="7">
+      お申し込みはこちら<img src="<?php echo get_template_directory_uri(); ?>/img/arrow_right.png" width="7">
     </a>
   </div>
 
