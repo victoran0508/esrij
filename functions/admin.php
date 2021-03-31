@@ -19,25 +19,26 @@
 				),
 				'rewrite' => array(
 					'slug' => 'solution',
-					'with_front' => false
+					'with_front' => false,
 				),
 				'hierarchical' => false,
 				'has_archive' => true,
 				'menu_position' => 21,
 				'public' => true,
+				'taxonomies' => array('solution-tag'),
                 "supports" => [ "title", "editor", "thumbnail" ],
             )
         );
 
 		// ソリューション・タグ
 		register_taxonomy(
-			'tag',
+			'solution-tag',
 			'solution',
 			array(
 				'update_count_callback' => '_update_post_term_count',
-				'label' => 'タグ',
+				'label' => 'ソリューションタグ',
 				'labels' => array(
-					'singular_name' => 'タグ',
+					'singular_name' => 'ソリューションタグ',
 					'menu_name' => 'タグ',
 				),
 				'public' => true,
@@ -45,11 +46,17 @@
 				'show_admin_column' => false,
 				'hierarchical' => true,
 				'rewrite' => array(
-					'slug' => 'tag',
+					'slug' => 'solution',
 					'with_front' => false
 				),
 			)
 		);
+
+		add_rewrite_rule('(solution)/([12]\d{3})/?$', 'index.php?post_type=$matches[1]&year=$matches[2]', 'top');
+		add_rewrite_rule('(solution)/([12]\d{3})/page/(\d+)/?$', 'index.php?post_type=$matches[1]&year=$matches[2]&paged=$matches[3]', 'top');
+		add_rewrite_rule('(solution)/([12]\d{3})/(.+?)/page/(\d+)/?$', 'index.php?post_type=$matches[1]&year=$matches[2]&solution-tag=$matches[3]&paged=$matches[4]', 'top');
+		add_rewrite_rule('(solution)/(.+?)/page/(\d+)/?$', 'index.php?post_type=$matches[1]&solution-tag=$matches[2]&paged=$matches[3]', 'top');
+		add_rewrite_rule('(solution)/([12]\d{3})/(.+?)/?$', 'index.php?post_type=$matches[1]&year=$matches[2]&solution-tag=$matches[3]', 'top');
 
         // お役立ち情報
         register_post_type('information',

@@ -6,7 +6,7 @@
   <!-- header -->
   <header>
     <div class="header_left">
-      <a href="<?php home_url(); ?>">
+      <a href="<?php home_url(); ?>/">
         <h1>物流・配送・ロジ地図システム<span>選定.com</span></h1>
       </a>
     </div>
@@ -18,7 +18,7 @@
         <a href="#" class="btn_orange center opacity">資料ダウンロード</a>
       </li>
       <li>
-        <a href="<?php home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/logo.png"></a>
+        <a href="<?php home_url(); ?>/"><img src="<?php echo get_template_directory_uri(); ?>/img/logo.png"></a>
       </li>
     </ul>
   </header>
@@ -74,7 +74,7 @@
                 </ul>
             </div>
         <?php endif; ?>
-          <a href="<?php home_url(); ?>information" class="btn_back">お役立ち情報一覧に戻る</a>
+          <a href="<?php home_url(); ?>/information" class="btn_back">お役立ち情報一覧に戻る</a>
         </div>
 
         <?php get_sidebar(); ?>

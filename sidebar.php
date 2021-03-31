@@ -15,7 +15,7 @@
                     <?php endwhile; wp_reset_query();
                 }
             ?>
-            <a href="<?php home_url(); ?>solution" class="btn_index">
+            <a href="<?php home_url(); ?>/solution" class="btn_index">
               一覧を見る<span>></span>
             </a>
           </ul>
@@ -35,7 +35,7 @@
                     <?php endwhile; wp_reset_query();
                 }
             ?>
-            <a href="<?php home_url(); ?>information" class="btn_index">
+            <a href="<?php home_url(); ?>/information" class="btn_index">
               一覧を見る<span>></span>
             </a>
           </ul>
@@ -55,7 +55,7 @@
                     <?php endwhile; wp_reset_query();
                 }
             ?>
-            <a href="<?php home_url(); ?>faq" class="btn_index">
+            <a href="<?php home_url(); ?>/faq" class="btn_index">
               一覧を見る<span>></span>
             </a>
           </ul>

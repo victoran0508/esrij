@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
 
-  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/information_index.css">
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/solution_index.css">
 </head>
 
-<body id="information_index">
+<body id="solution_index">
   <!-- header -->
   <header>
     <div class="header_left">
@@ -28,30 +28,38 @@
   <!-- main -->
   <div class="page_title">
     <div class="container">
-      <h1>地図システム活用のお役立ち情報</h1>
+      <h1>地図情報システム ソリューション</h1>
     </div>
   </div>
   <div class="container">
     <div class="main">
       <div class="current_page">
-        <p>TOP ＞ 地図システム活用のお役立ち情報一覧</p>
+        <p>TOP　>　地図情報システム ソリューション 一覧</p>
       </div>
-      <ul class="information_list">
+      <ul class="solutions_list">
         <?php
-            $query = new WP_Query( array(
-                'post_type' => 'information',
-                'posts_per_page' => -1,
-            ) );
+            // $query = new WP_Query( array(
+            //   'post_type' => 'solution',
+            //   'posts_per_page' => -1,
+            // ) );
         
-            if ($query->have_posts()) {
-                while ($query->have_posts() ) : $query->the_post(); ?>
+            // if ($query->have_posts()) {
+            //     while ($query->have_posts() ) : $query->the_post();
+            if (have_posts()) {
+              while (have_posts()) : the_post();
+        ?>
                 <li>
-                  <a href="<?php the_permalink(); ?>"></a>
-                  <img src="<?php the_post_thumbnail_url(); ?>">
-                  <p class="information_title"><?php the_title(); ?></p>
-                  <p><?php echo get_post_meta( $post->ID, 'company', true); ?></p>
+                    <a href="<?php the_permalink(); ?>"></a>
+                    <div class="solution_img">
+                        <img src="<?php the_post_thumbnail_url(); ?>">
+                        <p><?php echo get_post_meta( $post->ID, 'tab', true); ?></p>
+                    </div>
+                    <p class="solution_title"><?php echo get_post_meta( $post->ID, 'company', true); ?></p>
+                    <p><?php the_title(); ?></p>
                 </li>
-                <?php endwhile; wp_reset_query();
+        <?php
+              endwhile;
+              wp_reset_query();
             }
         ?>
       </ul>
