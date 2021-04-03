@@ -47,30 +47,32 @@
             <div class="related_information">
                 <h2>関連したソリューション</h2>
                 <ul class="information_list">
+                <?php
+                  $orig_post = $post;
+                  global $post;
+                  
+                  $args = array(
+                    'post_type' => 'information',
+                    'post__not_in' => array($post->ID),
+                    'posts_per_page' => 4, // Number of related posts that will be shown.
+                    'ignore_sticky_posts' => 1
+                  );
+                  
+                  $my_query = new wp_query( $args );
+                  if ($my_query->have_posts()) {
+                    while ($my_query->have_posts()) {
+                      $my_query->the_post();
+                ?>
                     <li>
-                        <a href="#"></a>
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/information1.png">
-                        <p class="information_title">バッテリー販売大手GISの利用で配送ルートの最適化とコスト削減を目指す。</p>
-                        <p>Interstate Batteries　社</p>
+                        <a href="<?php the_permalink(); ?>"></a>
+                        <img src="<?php the_post_thumbnail_url(); ?>">
+                        <p class="information_title"><?php the_title(); ?></p>
+                        <p><?php echo get_post_meta( $post->ID, 'company', true); ?></p>
                     </li>
-                    <li>
-                        <a href="#"></a>
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/information2.png">
-                        <p class="information_title">グローバルサプライチェーンの合理化と顧客への高品質なサービス提供を支援</p>
-                        <p>シスコシステムズ</p>
-                    </li>
-                    <li>
-                        <a href="#"></a>
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/information1.png">
-                        <p class="information_title">バッテリー販売大手GISの利用で配送ルートの最適化とコスト削減を目指す。</p>
-                        <p>Interstate Batteries　社</p>
-                    </li>
-                    <li>
-                        <a href="#"></a>
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/information2.png">
-                        <p class="information_title">グローバルサプライチェーンの合理化と顧客への高品質なサービス提供を支援</p>
-                        <p>シスコシステムズ</p>
-                    </li>
+                <?php
+                    }
+                  }
+                ?>
                 </ul>
             </div>
         <?php endif; ?>

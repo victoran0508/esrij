@@ -64,42 +64,47 @@
           <div class="related_solution">
             <h2>関連したソリューション</h2>
             <ul class="solutions_list">
+            <?php
+              $orig_post = $post;
+              global $post;
+              $tags = get_the_terms( $post->ID, 'solution-tag', true);
+              $tag_ids = array();
+              if ($tags) {
+                foreach($tags as $tag) $tag_ids[] = $tag->term_id;
+              }
+              
+              $args = array(
+                'post_type' => 'solution',
+                'post__not_in' => array($post->ID),
+                'tax_query' => array(
+                  array(
+                      'taxonomy' => 'solution-tag',
+                      'field' => 'id',
+                      'terms' => $tag_ids,
+                      'operator'=> 'IN'
+                  )),
+                'posts_per_page' => 4, // Number of related posts that will be shown.
+                'ignore_sticky_posts' => 1
+              );
+              
+              $my_query = new wp_query( $args );
+              if ($my_query->have_posts()) {
+                while ($my_query->have_posts()) {
+                  $my_query->the_post();
+            ?>
               <li>
-                <a href="#"></a>
+                <a href="<?php the_permalink(); ?>"></a>
                 <div class="solution_img">
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/solution.png">
-                  <p>配送エリアの管理</p>
+                  <img src="<?php the_post_thumbnail_url(); ?>">
+                  <p><?php echo get_post_meta( $post->ID, 'tab', true); ?></p>
                 </div>
-                <p class="solution_title">株式会社エバルス</p>
-                <p>ArcGISのVRP（配車システム）で新しい物流センターの人件費、必要車数を約90％削減</p>
+                <p class="solution_title"><?php echo get_post_meta( $post->ID, 'company', true); ?></p>
+                <p><?php the_title(); ?></p>
               </li>
-              <li>
-                <a href="#"></a>
-                <div class="solution_img">
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/solution.png">
-                  <p>国内中堅企業</p>
-                </div>
-                <p class="solution_title">国内企業B社</p>
-                <p>B社は、自動車、バイクなどに使うバッテリーを販売しているメーカーで、30社の販売代理店への配送効率化のために同システムを導入。</p>
-              </li>
-              <li>
-                <a href="#"></a>
-                <div class="solution_img">
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/solution.png">
-                  <p>国内中小企業</p>
-                </div>
-                <p class="solution_title">国内企業C社</p>
-                <p>C社は、関西にある運送会社で、配送エリアの管理のため同システムを導入、効率的な配送ルートを生成し、ドライバーの稼働時間を30時間/月削減を実現した。</p>
-              </li>
-              <li>
-                <a href="#"></a>
-                <div class="solution_img">
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/solution.png">
-                  <p>海外大手企業</p>
-                </div>
-                <p class="solution_title">米国UPS 社</p>
-                <p>自社配送ソリューションを活かしたまま、ESRIの地理情報システム導入で、約1.6億 kｍ走行距離を削減。</p>
-              </li>
+            <?php
+                  }
+                }
+            ?>
             </ul>
           </div>
           <a href="<?php home_url(); ?>/solution" class="btn_back">ソリューション一覧に戻る</a>
