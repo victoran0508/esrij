@@ -34,7 +34,7 @@
   <div class="container">
     <div class="main">
       <div class="current_page">
-        <p>TOP ＞ 地図システム活用のお役立ち情報一覧</p>
+        <p><a href="<?php home_url(); ?>/">TOP</a> ＞ 地図システム活用のお役立ち情報一覧</p>
       </div>
       <ul class="information_list">
         <?php

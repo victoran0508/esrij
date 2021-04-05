@@ -21,13 +21,13 @@
     </div>
     <ul class="header_right space_between">
       <li class="pc">
-        <a href="#" class="btn_red center opacity">ご相談・お問合わせ</a>
+        <a href="https://www.esrij.com/form/solutions/logistics/" class="btn_red center opacity">ご相談・お問合わせ</a>
       </li>
       <li class="pc">
-        <a href="#" class="btn_orange center opacity">資料ダウンロード</a>
+        <a href="https://go.esrij.com/sol_logistics_casestduies" class="btn_orange center opacity">資料ダウンロード</a>
       </li>
       <li>
-        <a href="<?php home_url(); ?>/"><img src="<?php echo get_template_directory_uri(); ?>/img/logo.png"></a>
+        <a href="https://www.esrij.com/"><img src="<?php echo get_template_directory_uri(); ?>/img/logo.png"></a>
       </li>
     </ul>
   </header>
@@ -207,7 +207,7 @@
           <p>ESRIジャパンでは120以上の地図情報と紐づいたデータをご提供しています。
             <br>ストア未公開データもございますのでお気軽にお問合せください。
           </p>
-          <a href="#" class="btn_more">
+          <a href="https://www.gisdata-store.biz/" class="btn_more">
             GISデータストア
             <img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png">
           </a>

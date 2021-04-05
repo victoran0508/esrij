@@ -11,10 +11,10 @@
       </div>
       <ul class="fixed_footer_right">
         <li>
-          <a href="#" class="btn_red center opacity">フォームでのご相談・お問合わせ</a>
+          <a href="https://www.esrij.com/form/solutions/logistics/" class="btn_red center opacity">フォームでのご相談・お問合わせ</a>
         </li>
         <li>
-          <a href="#" class="btn_orange center opacity">資料ダウンロード</a>
+          <a href="https://go.esrij.com/sol_logistics_casestduies" class="btn_orange center opacity">資料ダウンロード</a>
         </li>
       </ul>
     </div>

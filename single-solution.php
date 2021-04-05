@@ -32,7 +32,7 @@
   <div class="container">
     <div class="main">
       <div class="current_page">
-        <p>TOP　>　地図情報システム ソリューション 一覧 > <?php the_title(); ?></p>
+        <p><a href="<?php home_url(); ?>/">TOP</a> ＞<a href="<?php home_url(); ?>/solution/">地図情報システム ソリューション 一覧</a> > <?php the_title(); ?></p>
       </div>
       <div class="article">
         <div class="article_content">

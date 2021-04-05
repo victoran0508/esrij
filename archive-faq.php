@@ -43,7 +43,7 @@
   <div class="container">
     <div class="main">
       <div class="current_page">
-        <p>TOP ＞よくある質問</p>
+        <p><a href="<?php home_url(); ?>/">TOP</a> ＞よくある質問</p>
       </div>
       <div class="article">
         <div class="article_content">

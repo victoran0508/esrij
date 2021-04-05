@@ -34,17 +34,11 @@
   <div class="container">
     <div class="main">
       <div class="current_page">
-        <p>TOP　>　地図情報システム ソリューション 一覧</p>
+        <p><a href="<?php home_url(); ?>/">TOP</a>　>　地図情報システム ソリューション 一覧</p>
       </div>
+      <p># <?php echo get_term_by('slug', get_query_var('solution-tag'), 'solution-tag')->name; ?></p>
       <ul class="solutions_list">
         <?php
-            // $query = new WP_Query( array(
-            //   'post_type' => 'solution',
-            //   'posts_per_page' => -1,
-            // ) );
-        
-            // if ($query->have_posts()) {
-            //     while ($query->have_posts() ) : $query->the_post();
             if (have_posts()) {
               while (have_posts()) : the_post();
         ?>
